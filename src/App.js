@@ -1,17 +1,17 @@
-import './App.scss';
-import ColumnLeft from './components/ColumnLeft';
-import ColumnRight from './components/ColumnRight';
+import {Routes, Route} from 'react-router-dom'
+import React from 'react';
+
+import Login from './Login';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <div className="column-left">
-        <ColumnLeft />
-      </div>
-      <div className="column-right">
-        <ColumnRight />
-      </div>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes>
+    </>
   );
 }
 
