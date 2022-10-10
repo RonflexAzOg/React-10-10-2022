@@ -1,6 +1,8 @@
 .form{
     display: flex;
     flex-direction: column;
+    height: 80vh;
+    justify-content: space-evenly;
 
     h1{
         font-size: 1em;
@@ -17,32 +19,58 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .form-control{
         display: block;
         width: 100%;
         padding: 0.47rem 0.75rem;
-        margin: 0.47rem 0.75rem;
+        margin: 0.47rem 0;
         font-size: .8125rem;
         font-weight: 400;
         line-height: 1.5;
         color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
         border: 1px solid #ced4da;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
         border-radius: 0.25rem;
-        -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-        transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    }
+      }
 
     .password{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    [type=submit]:not(:disabled), button:not(:disabled) {
+        cursor: pointer;
+        color: #fff;
+        background-color: #556ee6;
+    }
+
+    .button{
+        line-height: 1.5;
+        border: 1px solid #556ee6;
+        padding: 0.47rem 0.75rem;
+        margin: 3% 0;
+        border-radius: 0.25rem;
+    }
+
+    .sign-in{
+        text-align: center;
+    }
+
+    .icon-3-column{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 5%;
+
+        .facebook{
+            cursor: pointer;
+        }
+        .twitter{
+            cursor: pointer;
+        }
+        .google{
+            cursor: pointer;
+        }
     }
 }
