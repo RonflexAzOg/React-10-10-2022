@@ -1,13 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './components/Navbar';
-import HelloWord from './components/HelloWord';
+import './App.scss';
+import ColumnLeft from './components/ColumnLeft';
+import ColumnRight from './components/ColumnRight';
 
 function App() {
   return (
     <div className="App">
-      <HelloWord test={''} uneProps={'une props'} />
-      <Navbar />
+      <div className="column-left">
+        <ColumnLeft />
+      </div>
+      <div className="column-right">
+        <ColumnRight />
+      </div>
     </div>
   );
 }
