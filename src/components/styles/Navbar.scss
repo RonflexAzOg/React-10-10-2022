@@ -1,0 +1,29 @@
+.navbar{
+    background-color: #fff;
+    height: 5vh;
+    width: calc(100% - 300px);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1% 0% 1% 0;
+    position: fixed;
+    margin-left: 300px;
+
+    .language{
+        margin-right: 3%;
+    }
+
+    .profil{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 0%;
+        width: 10%;
+
+        img{
+            border-radius: 100%;
+            padding-right: 5px;
+        }
+    }
+}

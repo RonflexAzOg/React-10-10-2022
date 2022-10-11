@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/form.scss'
+import './styles/LoginForm.scss'
 
 import facebook from '../img/login/facebook.png'
 import twitter from '../img/login/twitter.png'
@@ -48,7 +48,7 @@ export default function LoginForm() {
         <p>Don't have an account ? <a href="/#">Signup now</a></p>
       </div>
       <div className="credit">
-        <p>©2022 Barray Lucas. Crafted with by React</p>
+        <p>©2022 Barray Lucas. Crafted with ♥ by React</p>
       </div>
     </div>
   )
