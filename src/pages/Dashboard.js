@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './components/Sidebar'
-import Navbar from './components/Navbar'
+import Sidebar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
 
-import './styles/Dashboard.scss'
+import '../styles/Dashboard.scss'
 
 function Dashboard() {
 
@@ -11,7 +11,7 @@ function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
+    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=15`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(

@@ -1,12 +1,15 @@
 .dashboard{
     height: 100vh;
     width: 100vw;
-
     display: flex;
     flex-direction: row;
+    background-color: #f7f7fa;
+
 
     .content-dashboard{
         background-color: #f7f7fa;
+        background-repeat: repeat-y;
+        height: 100%;
         padding: 10vh 0 0 330px;
         width: 84vw;
     }
