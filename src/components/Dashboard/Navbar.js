@@ -1,7 +1,9 @@
 import React from 'react'
-import './styles/Navbar.scss'
-import Poire from '../img/dashboard/lhomme-poire.jpeg'
-import FrenchFlag from '../img/dashboard/french.jpg'
+
+import Poire from '../../img/dashboard/lhomme-poire.jpeg'
+import FrenchFlag from '../../img/dashboard/french.jpg'
+
+import '../styles/Navbar.scss'
 
 export default function Navbar() {
   return (

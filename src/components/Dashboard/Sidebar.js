@@ -1,8 +1,9 @@
 import React from 'react'
-import './styles/Sidebar.scss'
 
-import LogoWhite from './LogoWhite'
-import Home from '../img/dashboard/home.png'
+import LogoWhite from '../LogoWhite'
+import Home from '../../img/dashboard/home.png'
+
+import '../styles/Sidebar.scss'
 
 function Sidebar() {
   return (

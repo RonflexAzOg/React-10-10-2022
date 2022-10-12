@@ -1,6 +1,6 @@
 import '../styles/Login.scss';
-import ColumnLeft from '../components/ColumnLeft';
-import ColumnRight from '../components/ColumnRight';
+import ColumnLeft from '../components/Login/ColumnLeft';
+import ColumnRight from '../components/Login/ColumnRight';
 
 function Login() {
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../components/Sidebar'
-import Navbar from '../components/Navbar'
+
+import Sidebar from '../components/Dashboard/Sidebar'
+import Navbar from '../components/Dashboard/Navbar'
 
 import '../styles/Dashboard.scss'
 

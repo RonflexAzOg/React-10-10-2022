@@ -1,90 +1,70 @@
-import React, {  useState, useEffect } from 'react'
-import {useNavigate} from 'react-router-dom'
-import './styles/LoginForm.scss'
+import React, {  useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
+import useInput from '../../hooks/useInput'
 
-import facebook from '../img/login/facebook.png'
-import twitter from '../img/login/twitter.png'
-import googleplus from '../img/login/google-plus.png'
+import facebook from '../../img/login/facebook.png';
+import twitter from '../../img/login/twitter.png';
+import googleplus from '../../img/login/google-plus.png';
+
+import '../styles/LoginForm.scss';
 
 
 export default function LoginForm() {
 
   const navigate = useNavigate();
 
-  // Email
-  const [emailState, setEmailState] = useState('')
-  const [emailIsValid, setEmailIsValid] = useState(false)
-  const [emailIsTouched, setEmailIsTouched] = useState(false)
+  const { 
+      value: enteredEmail, 
+      isValid: enteredEmailIsValid, 
+      hasError: emailInputHasError, 
+      valueChangeHandler: emailChangedHandler, 
+      inputBlurHandler: emailBlurHandler, 
+      reset: resetEmailInput 
+  } = useInput(value => value.trim() !== '' && value.includes('@')); 
+  // Add condition for email input
 
-  useEffect(()=>{
-    if (emailIsValid) console.log('email is Valid')
-  }, [emailIsValid])
+  const { 
+      value: enteredPassword, 
+      isValid: enteredPasswordIsValid, 
+      hasError: passwordInputHasError, 
+      valueChangeHandler: passwordChangedHandler, 
+      inputBlurHandler: passwordBlurHandler, 
+      reset: resetPasswordInput 
+  } = useInput(value => value.trim() !== '' && value.length >= 8); 
+  // Add condition for password input"
 
-  const emailChangeHandler = (e) => {
-    setEmailState(e.target.value)
-  }
 
-  const emailBlurHandler = (e) => {
-    setEmailIsTouched(true);
+  // By default formIsValid is false
+  let formIsValid = false; 
 
-    if(emailState.trim() === '') {
-      setEmailIsValid(false)
-      return;
-    }
-  }
-
-  // Password
-  const [passwordState, setPasswordState] = useState('')
-  const [passwordIsValid, setPasswordIsValid] = useState(false)
-  const [passwordIsTouched, setPasswordIsTouched] = useState(false)
- 
-  useEffect(()=>{
-    if (passwordIsValid) console.log('password is Valid')
-  }, [passwordIsValid])
-
-  const passwordChangeHandler = (e) => {
-    setPasswordState(e.target.value)
-  }
-
-  const passwordBlurHandler = (e) => {
-    setPasswordIsTouched(true);
-
-    if(passwordState.trim() === '') {
-      setPasswordIsValid(false)
-      return;
-    }
-  }
+  // If all condition is true then the formIsValid is true
+  if (enteredEmailIsValid && enteredPasswordIsValid) { 
+      formIsValid = true; 
+  } 
  
   //  Form
   const formSubmissionHandler = (event) => {
     event.preventDefault()
-    setEmailIsTouched(true);
-    setPasswordIsTouched(true);
 
-    if(emailState.trim() === '') {
-      setEmailIsValid(false)
-      return;
-    }
-    if(passwordState.trim() === '') {
-      setPasswordIsValid(false)
-      return;
-    }
-    setEmailIsValid(true);
-    setPasswordIsValid(true);
-    // .... traitement exemple: requete POST
-    setEmailState('');
-    setPasswordState('');
+    if (!enteredEmailIsValid) { 
+      return; 
+    } 
+
+    if (!enteredPasswordIsValid) { 
+      return; 
+    } 
+
+    resetPasswordInput(); 
+    resetEmailInput();
     
     navigate('/dashboard')
   }
 
   // Email
-  const emailInputIsinvalid = !emailIsValid &&  emailIsTouched;
-  const emailInputClasses = emailInputIsinvalid ? 'form-control invalid' : 'form-control';
+  const emailInputClasses = emailInputHasError ? 'form-control invalid' : 'form-control';
 
   // Password
-  const passwordInputIsinvalid = !passwordIsValid &&  passwordIsTouched;
-  const passwordInputClasses = passwordInputIsinvalid ? 'form-control invalid' : 'form-control';
+  const passwordInputClasses = passwordInputHasError ? 'form-control invalid' : 'form-control';
 
 
   return (
@@ -96,8 +76,8 @@ export default function LoginForm() {
             <label htmlFor='email' className='email-label'>
               Email
               <input 
-              value={emailState}
-              onChange={emailChangeHandler} 
+              value={enteredEmail}
+              onChange={emailChangedHandler} 
               onBlur={emailBlurHandler}
               type='email' 
               id='email' 
@@ -105,7 +85,7 @@ export default function LoginForm() {
               placeholder='Enter Email'/>
             </label>
 
-            {emailInputIsinvalid && (
+            {emailInputHasError && (
               <p className='error-text'>Email cannot be empty</p>
             )}
 
@@ -115,15 +95,15 @@ export default function LoginForm() {
                 <a href="/#">Forgot password ?</a>
               </div>
               <input 
-                value={passwordState}
-                onChange={passwordChangeHandler} 
+                value={enteredPassword}
+                onChange={passwordChangedHandler} 
                 onBlur={passwordBlurHandler}
                 type='password' 
                 id='password' 
                 className={passwordInputClasses} 
                 placeholder='Enter password'/>
 
-              {passwordInputIsinvalid && (
+              {passwordInputHasError && (
                 <p className='error-text'>Password cannot be empty</p>
               )}
               
