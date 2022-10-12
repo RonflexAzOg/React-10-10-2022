@@ -11,7 +11,7 @@ const useInput = (validateValue) => {
     const valueIsValid = validateValue(enteredValue); 
     // If there is an error with an input return true
     const hasError = !valueIsValid && isTouched; 
-
+    
 
     // If user is in input then change the value of setIsTouched()
     const valueChangeHandler = (event) => { 

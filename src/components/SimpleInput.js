@@ -5,65 +5,81 @@ import useInput from '../hooks/useInput';
 
 const SimpleInput = (props) => { 
 
-  const { 
-    value: enteredName, 
-    isValid: enteredNameIsValid, 
-    hasError: nameInputHasError, 
-    valueChangeHandler: nameChangedHandler, 
-    inputBlurHandler: nameBlurHandler, 
-    reset: resetNameInput 
-  } = useInput(value => value.trim() !== ''); 
-  // Remove the space with the ".trim()" and try if is not empty with "!== ''"
+    const { 
+        value: enteredName, 
+        isValid: enteredNameIsValid, 
+        hasError: nameInputHasError, 
+        valueChangeHandler: nameChangedHandler, 
+        inputBlurHandler: nameBlurHandler, 
+        reset: resetNameInput 
+    } = useInput(value => value.trim() !== ''); 
+    // Remove the space with the ".trim()" and try if is not empty with "!== ''"
 
-  // State of email input by default is empty 
-  const [enteredEmail, setEnteredEmail] = useState(''); 
-  // Check if user is in email input 
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false); 
+    const { 
+        value: enteredEmail, 
+        isValid: enteredEmailIsValid, 
+        hasError: emailInputHasError, 
+        valueChangeHandler: emailChangedHandler, 
+        inputBlurHandler: emailBlurHandler, 
+        reset: resetEmailInput 
+    } = useInput(value => value.trim() !== '' && value.includes('@')); 
+    // Add condition for email input
 
-  // Check if user use an @ in the email input
-  const enteredEmailIsValid = enteredEmail.includes('@'); 
-  const enteredEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched; 
 
-  // By default formIsValid is false
-  let formIsValid = false; 
+    // // State of email input by default is empty 
+    // const [enteredEmail, setEnteredEmail] = useState(''); 
+    // // Check if user is in email input 
+    // const [enteredEmailTouched, setEnteredEmailTouched] = useState(false); 
 
-  // If all condition is true then the formIsValid is true
-  if (enteredNameIsValid && enteredEmailIsValid) { 
-    formIsValid = true; 
-  } 
+    // // Check if user use an @ in the email input
+    // const enteredEmailIsValid = enteredEmail.includes('@'); 
+    // const enteredEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched; 
 
-  const emailInputChangeHandler = (event) => { 
-    setEnteredEmail(event.target.value); 
-  }; 
+    // By default formIsValid is false
+    let formIsValid = false; 
 
-  const emailInputBlurHandler = (event) => { 
-    setEnteredEmailTouched(true); 
-  }; 
-
-  const formSubmissionHandler = (event) => { 
-    event.preventDefault(); 
-
-    if (!enteredNameIsValid) { 
-      return; 
+    // If all condition is true then the formIsValid is true
+    if (enteredNameIsValid && enteredEmailIsValid) { 
+        formIsValid = true; 
     } 
 
-    // console.log(enteredName); 
+    // const emailInputChangeHandler = (event) => { 
+    //     setEnteredEmail(event.target.value); 
+    // }; 
 
-    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM 
-    resetNameInput(); 
+    // const emailInputBlurHandler = (event) => { 
+    //     setEnteredEmailTouched(true); 
+    // }; 
 
-    setEnteredEmail(''); 
+    const formSubmissionHandler = (event) => { 
+        event.preventDefault(); 
 
-    setEnteredEmailTouched(false); 
-  }; 
+        if (!enteredNameIsValid) { 
+            return; 
+        } 
 
-  // Ternary for change class of name input (display red input)
-  const nameInputClasses = nameInputHasError  ? 'form-control invalid' : 'form-control'; 
-  
-  // Ternary for change class of email input (display red input)
-  const emailInputClasses = enteredEmailIsInvalid ? 'form-control invalid' : 'form-control'; 
+        if (!enteredEmailIsValid) { 
+            return; 
+        } 
 
- 
+        // console.log(enteredName); 
+
+        // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM 
+        resetNameInput(); 
+        resetEmailInput();
+
+        // setEnteredEmail(''); 
+
+        // setEnteredEmailTouched(false); 
+    }; 
+
+    // Ternary for change class of name input (display red input)
+    const nameInputClasses = nameInputHasError  ? 'form-control invalid' : 'form-control'; 
+    
+    // Ternary for change class of email input (display red input)
+    const emailInputClasses = emailInputHasError ? 'form-control invalid' : 'form-control'; 
+
+    
     return ( 
     <form onSubmit={formSubmissionHandler}> 
       <div className={nameInputClasses}> 
@@ -87,13 +103,13 @@ const SimpleInput = (props) => {
         <input 
           type='email' 
           id='email' 
-          onChange={emailInputChangeHandler} 
-          onBlur={emailInputBlurHandler} 
+          onChange={emailChangedHandler}
+          onBlur={emailBlurHandler} 
           value={enteredEmail} 
         /> 
 
         {/* Display error message in red */}
-        {enteredEmailIsInvalid && ( 
+        {emailInputHasError && ( 
           <p className='error-text'>Please enter a valid email.</p> 
         )} 
 
