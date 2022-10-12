@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import Sidebar from '../components/Dashboard/Sidebar'
-import Navbar from '../components/Dashboard/Navbar'
+import Sidebar from '../components/Dashboard/Sidebar';
+import Navbar from '../components/Dashboard/Navbar';
 
-import '../styles/Dashboard.scss'
+import '../styles/Dashboard.scss';
 
 function Dashboard() {
+
+  const emailLocalStorage = localStorage.getItem("email");
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=15`)
+    fetch(`https://randomuser.me/api/`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(
@@ -32,8 +34,7 @@ function Dashboard() {
     .finally(() => {
       setLoading(false);
     });
-}, []);
-  
+}, []);  
 
   return (
 
@@ -41,13 +42,22 @@ function Dashboard() {
         <Sidebar />
         <Navbar />
         <div className="content-dashboard">
-            <h2>Monitoring list</h2>
+          <h1>Welcome {emailLocalStorage}</h1>
+            <h2>User generated</h2>
             <ul>
               {data &&
-                data.map(({ id, title, body }) => (
-                  <li key={id}>
-                    <h3>{title}</h3>
-                    <p>{body}</p>
+                data.results.map(({ name, email, login, location, phone, picture }, i) => (
+                  <li key={i}>
+                    <div className="img-content">
+                      <img src={picture.large} alt="" className='circle-image' width={200}/>
+                      <div className="content">
+                        <h2>{login.username} - {email}</h2>
+                        <h3>{name.title}, {name.first} {name.last}</h3>
+                        <p>Phone number : {phone}</p>
+                        <p>Location : {location.street.number} {location.street.name} <br/> {location.postcode} {location.state} {location.country}</p>
+                      </div>
+                      <button>Modifier les données</button>
+                    </div>
                   </li>
                 ))}
             </ul>

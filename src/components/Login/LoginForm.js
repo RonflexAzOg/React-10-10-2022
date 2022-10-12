@@ -44,7 +44,10 @@ export default function LoginForm() {
  
   //  Form
   const formSubmissionHandler = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    localStorage.setItem("email", enteredEmail);
+    localStorage.setItem("password", enteredPassword);
 
     if (!enteredEmailIsValid) { 
       return; 
@@ -57,7 +60,7 @@ export default function LoginForm() {
     resetPasswordInput(); 
     resetEmailInput();
     
-    navigate('/dashboard')
+    navigate('/dashboard');
   }
 
   // Email

@@ -4,7 +4,7 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: top;
+    justify-content: space-between;
     align-items: left;
     padding-top: 1%;
     position: fixed;
@@ -55,5 +55,9 @@
         img{
             margin-right: 3%;
         }
+    }
+
+    .button-logout{
+        margin: 0 4% 10% 5%;
     }
 }

@@ -12,5 +12,27 @@
         height: 100%;
         padding: 10vh 0 0 330px;
         width: 84vw;
+
+        ul{
+            list-style: none;
+        }
     }
+
+    .img-content{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        .circle-image{
+            border-radius: 50%;
+        }
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            padding-left: 3%;
+        }
+    }    
 }
