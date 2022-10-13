@@ -74,7 +74,7 @@ export default function LoginForm() {
     <div className='form'>
       <div className="form-text">
         <h1>Welcome Back !</h1>
-        <p>Sign in to continue to API Monitoring.</p>
+        <p>Sign in to continue to Generator User.</p>
         <form onSubmit={formSubmissionHandler}>
             <label htmlFor='email' className='email-label'>
               Email
