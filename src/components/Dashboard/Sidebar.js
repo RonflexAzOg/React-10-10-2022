@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import LogoWhite from '../LogoWhite';
 import Home from '../../img/dashboard/home.png';
+import Logout from '../../img/dashboard/power-off.png'
 
 import '../styles/Sidebar.scss';
 
@@ -42,7 +43,10 @@ function Sidebar() {
         </div>
       </div>
       <div className="bottom">
-        <button onClick={handleClick} className="button-logout">Logout</button> 
+        <button onClick={handleClick} className="button-logout">
+          <img src={Logout} alt="Logout" width={20} height={20}/>
+          Logout
+        </button> 
       </div>
     </div>
   )

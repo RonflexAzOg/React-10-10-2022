@@ -9,6 +9,32 @@
     padding-top: 1%;
     position: fixed;
 
+    .bottom{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .button-logout{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0 4% 10% 5%;
+            background-color: #ac0000;
+            border: 1px solid #ac0000;
+            &:hover{
+                background-color: #940000;
+                border: 1px solid #940000;
+            }
+        }
+
+        img{
+            margin-right: 15%;
+            margin-bottom: 1%;
+        }
+    }
+
     .logo{
         display: flex;
         flex-direction: column;
@@ -55,9 +81,5 @@
         img{
             margin-right: 3%;
         }
-    }
-
-    .button-logout{
-        margin: 0 4% 10% 5%;
     }
 }
