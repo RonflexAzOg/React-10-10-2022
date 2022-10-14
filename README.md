@@ -1,6 +1,10 @@
 # Generator User 10-10-2022
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com).
+> A user generator for a livelier "pre-prod experience"<br>
+> Live demo [_here_](https://final--quiet-toffee-6998a5.netlify.app).<br>
+
+![Netlify Status](https://api.netlify.com/api/v1/badges/d6a3b8de-458d-4399-bee5-5cc767b1a01e/deploy-status)
+
+
 
 ## Table of Contents
 * [General Info](#general-information)
