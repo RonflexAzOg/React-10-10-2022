@@ -44,29 +44,29 @@ export default function LoginForm() {
  
   //  Form
   const formSubmissionHandler = (event) => {
-    event.preventDefault();
+      if (formIsValid){
+          event.preventDefault();
 
-    localStorage.setItem("email", enteredEmail);
-    localStorage.setItem("password", enteredPassword);
-
-    if (!enteredEmailIsValid) { 
-      return; 
-    } 
-
-    if (!enteredPasswordIsValid) { 
-      return; 
-    } 
-
-    resetPasswordInput(); 
-    resetEmailInput();
-    
-    navigate('/dashboard');
+          localStorage.setItem("email", enteredEmail);
+          localStorage.setItem("password", enteredPassword);
+      
+          if (!enteredEmailIsValid) { 
+            return; 
+          } 
+      
+          if (!enteredPasswordIsValid) { 
+            return; 
+          } 
+      
+          resetPasswordInput(); 
+          resetEmailInput();
+          
+          navigate('/dashboard');
+      }
   }
 
-  // Email
+  // Error
   const emailInputClasses = emailInputHasError ? 'form-control invalid' : 'form-control';
-
-  // Password
   const passwordInputClasses = passwordInputHasError ? 'form-control invalid' : 'form-control';
 
 
