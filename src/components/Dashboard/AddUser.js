@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import useInput from '../../hooks/useInput';
 
@@ -345,7 +345,8 @@ function AddUser(props) {
                     accept="image/png, image/jpeg"
                     value={enteredPicture}
                     onChange={pictureChangedHandler}
-                    onBlur={pictureBlurHandler} />
+                    onBlur={pictureBlurHandler}
+                    className={pictureInputClasses} />
 
                     {pictureInputHasError && (
                         <p className='error-text'>The picture cannot be empty</p>

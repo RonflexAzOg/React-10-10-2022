@@ -12,7 +12,7 @@ export default function Navbar() {
         <img src={FrenchFlag} alt="French flag" width={30}/>
       </div>
       <div className="profil">
-        <img src={Pp} alt="Profile picture" width={40} height={40}/>
+        <img src={Pp} alt="Profile" width={40} height={40}/>
         Lucas
       </div>
     </div>
